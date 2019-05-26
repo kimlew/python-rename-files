@@ -4,6 +4,9 @@ __pycache__
 .idea
 .pytest_cache
 
+bin
+include
+
 # Distribution / packaging
 lib/
 
