@@ -8,23 +8,23 @@ from os import walk
 import pprint
 
 
-# def main():
-# Read in parameter with absolute or relative folder path you want.
-# Intialized path for testing.
-path_used = '/Users/kimlew/Documents/Courses and ' \
-            'Tutorials/_aFRENCH_Spanish_Swedish/Swedish Babbel/'
+def main():
+    # Read in parameter with absolute or relative folder path you want.
+    # Intialized path for testing.
+    path_used = '/Users/kimlew/Documents/Courses and ' \
+                'Tutorials/_aFRENCH_Spanish_Swedish/Swedish Babbel/'
 
-f = []
-for (_, _, filenames) in walk(path_used):
-    print('Filenames are: ')
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(filenames)
+    f = []
+    for (_, _, filenames) in walk(path_used):
+        print('Filenames are: ')
+        pp = pprint.PrettyPrinter(indent=4)
+        pp.pprint(filenames)
 
-    f.extend(filenames)
-    print('')
+        f.extend(filenames)
+        print('')
 
-    # Do not need a regex. Use: filename[0] == '_'
-    # rename()
+        # Do not need a regex. Use: filename[0] == '_'
+        # rename()
 
 
 # Helpful Info:
@@ -35,5 +35,5 @@ for (_, _, filenames) in walk(path_used):
 #     os.getcwd()
 
 # Driver Code
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
