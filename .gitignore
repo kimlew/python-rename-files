@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+
+.idea
+.pytest_cache
+
+# Distribution / packaging
+lib/
+
+*.log
+ 
