@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 # Script that replaces files in folder that start with _ TO: '' (empty string).
-# Enter absolute path or reltive path as command-line parameter.
+# Enter absolute path or relative path as command-line parameter.
 
 from os import walk # In General: Explicit best - so you know where import from.
 import pprint
