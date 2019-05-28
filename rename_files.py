@@ -1,15 +1,25 @@
 #! /usr/bin/env python3
 
 # Script that replaces files in folder that start with _ TO: '' (empty string).
-# Enter absolute path or relative path as command-line parameter.
+# Enter as command-line parameter:
+# 1 - string you want to replace
+# 2 - absolute path or relative path
 
 # In General: Explicit import best - so you know where import from.
+import sys
 from os import walk
 import pprint
 
 
 def main():
     # Read in parameter with absolute or relative folder path you want.
+
+    string_to_replace = sys.argv[1]
+    path_of_files = sys.argv[2]
+    print('sys.argv[1]: ', string_to_replace)
+    print('sys.argv[2]: ', path_of_files)
+    print()
+
     # Intialized path for testing.
     path_used = '/Users/kimlew/Documents/Courses and ' \
                 'Tutorials/_aFRENCH_Spanish_Swedish/Swedish Babbel/'
@@ -25,6 +35,7 @@ def main():
 
         # Do not need a regex. Use: filename[0] == '_'
         # rename()
+        # replace('_', '')
 
 
 # Helpful Info:
