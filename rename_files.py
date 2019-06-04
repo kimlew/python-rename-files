@@ -7,6 +7,7 @@
 
 # In General: Explicit import best - so you know where import from.
 import sys
+import os
 
 from os import walk
 from os import listdir
@@ -46,20 +47,27 @@ def main():
         filenames_array.extend(filenames)
         print('')
 
-        # TODO
+        # TODO: Use 1 of:
         # rename()
         # replace('_', '')
         # starts_with()
 
-        # Do not need a regex.
+        for a_filename in filenames_array:
+            # The '#' is replaced by the '-' in the filenames in the directory.
+            new_name = a_filename.replace('_', '')
+            print('new_name is: ', new_name)
+
+            if new_name != a_filename:
+                os.rename(a_filename, new_name)
+
+        # Note: Do not need a regex.
         # Use to find if filename starts: filename[0] ==
-        # '_'
 
         # Try 2: only_files = [filenames_array for filenames_array in listdir(path_used) if isfile(join(
         # path_used, filenames_array))]
 
     pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(filenames_array)
+    # pp.pprint(filenames_array)
 
 # -- Helpful Info --
 '''
