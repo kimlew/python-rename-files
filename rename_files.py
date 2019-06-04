@@ -7,7 +7,12 @@
 
 # In General: Explicit import best - so you know where import from.
 import sys
+
 from os import walk
+from os import listdir
+from os.path import isfile
+from os.path import join
+
 import pprint
 
 
@@ -21,24 +26,51 @@ def main():
     print()
 
     # Intialized path for testing.
-    path_used = '/Users/kimlew/Documents/Courses and ' \
-                'Tutorials/_aFRENCH_Spanish_Swedish/Swedish Babbel/'
+    '''
+    path_name = '/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish'
+    '''
 
-    f = []
-    for (_, _, filenames) in walk(path_used):
+    # Try 1: walk() - yields 2 lists for each directory it visits - splits
+    # into files & dirs for you. If you ONLY want the TOP-level directory -
+    # break the 1st time it yields.
+    filenames_array = []
+    for (_, _, filenames) in walk(path_of_files):
+        # e.g. for path, subdir, files in os.walk(path):
+        # e.g. for cur_path, directories, files in os.walk(directory):
         print('Filenames are: ')
-        pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(filenames)
 
-        f.extend(filenames)
+        # Test that all files show.
+        # pp = pprint.PrettyPrinter(indent=4)
+        # pp.pprint(filenames)
+
+        filenames_array.extend(filenames)
         print('')
 
-        # Do not need a regex. Use: filename[0] == '_'
+        # TODO
         # rename()
         # replace('_', '')
+        # starts_with()
 
+        # Do not need a regex.
+        # Use to find if filename starts: filename[0] ==
+        # '_'
 
-# Helpful Info:
+        # Try 2: only_files = [filenames_array for filenames_array in listdir(path_used) if isfile(join(
+        # path_used, filenames_array))]
+
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(filenames_array)
+
+# -- Helpful Info --
+'''
+# Loop through every file in the current working directory.
+print("os.listdir('.') is: ", os.listdir('.'))
+print()
+
+for csv_filename in os.listdir('.'):
+    if not csv_filename.endswith('.csv'):
+        continue    # Skip non-csv files.
+'''
 # os.path.getsize('/tmp')
 
 # for filename in myFiles:
