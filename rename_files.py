@@ -7,7 +7,7 @@
 
 # In General: Explicit import best - so you know where import from.
 import sys
-import os
+from os import rename
 
 from os import walk
 from os import listdir
@@ -54,11 +54,12 @@ def main():
 
         for a_filename in filenames_array:
             # The '#' is replaced by the '-' in the filenames in the directory.
+            # Use startswith().
             new_name = a_filename.replace('_', '')
             print('new_name is: ', new_name)
 
             if new_name != a_filename:
-                os.rename(a_filename, new_name)
+                rename(a_filename, new_name) # rename is a top-level function.
 
         # Note: Do not need a regex.
         # Use to find if filename starts: filename[0] ==
