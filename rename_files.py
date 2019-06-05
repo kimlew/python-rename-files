@@ -54,12 +54,14 @@ def main():
 
         for a_filename in filenames_array:
             # The '#' is replaced by the '-' in the filenames in the directory.
+            # replace() - is a string method.
             # Use startswith().
-            new_name = a_filename.replace('_', '')
+            new_name = a_filename.replace('_', '').startswith()
             print('new_name is: ', new_name)
 
             if new_name != a_filename:
-                rename(a_filename, new_name) # rename is a top-level function.
+                # rename() - is a top-level function.
+                rename(a_filename, new_name)
 
         # Note: Do not need a regex.
         # Use to find if filename starts: filename[0] ==
