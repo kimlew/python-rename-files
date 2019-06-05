@@ -56,7 +56,7 @@ def main():
             # The '#' is replaced by the '-' in the filenames in the directory.
             # replace() - is a string method.
             # Use startswith().
-            new_name = a_filename.replace('_', '').startswith()
+            new_name = a_filename.replace(string_to_replace, '').startswith()
             print('new_name is: ', new_name)
 
             if new_name != a_filename:
