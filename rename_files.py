@@ -29,6 +29,8 @@ def main():
     # '/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish'
 
     # TODO: Add check for if path exists.
+    # Use os.path.exists - to check if any directory exists or not.
+    # Use os.makedirs - to create a directory.
 
     # Try 1: walk() - yields 2 lists for each directory it visits.
     # Splits into files & dirs for you. If you ONLY want the TOP-level
@@ -57,8 +59,10 @@ def main():
             # The '#' is replaced by the '-' in the filenames in the directory.
             # replace() - is a string method.
             # Use startswith().
-            new_name = a_filename.replace(string_to_replace, '').startswith()
-            print('new_name is: ', new_name)
+
+            if a_filename.startswith(string_to_replace):
+                new_name = a_filename.replace(string_to_replace, '')
+                print('new_name is: ', new_name)
 
             if new_name != a_filename:
                 # rename() - is a top-level function.
