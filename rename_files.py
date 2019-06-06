@@ -20,9 +20,12 @@ import pprint
 def main():
     # Read in parameter with absolute or relative folder path you want.
     string_to_replace = sys.argv[1]
-    path_of_files = sys.argv[2]
+    replacement_string = sys.argv[2]
+    path_of_files = sys.argv[3]
+
     print('sys.argv[1]: ', string_to_replace)
-    print('sys.argv[2]: ', path_of_files)
+    print('sys.argv[2]: ', replacement_string)
+    print('sys.argv[3]: ', path_of_files)
     print()
 
     # Path to use for testing.
@@ -61,7 +64,7 @@ def main():
             # Use startswith().
 
             if a_filename.startswith(string_to_replace):
-                new_name = a_filename.replace(string_to_replace, '')
+                new_name = a_filename.replace(string_to_replace, replacement_string)
                 print('new_name is: ', new_name)
 
             if new_name != a_filename:
