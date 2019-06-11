@@ -71,19 +71,32 @@ def main():
             # Try 2: only_files = [filenames_array for filenames_array in listdir(path_used) if isfile(join(
             # path_used, filenames_array))]
 
+
             for a_filename in filenames_array:
                 # The '#' is replaced by the '-' in the filenames in the directory.
                 # replace() - is a string method.
                 # Use startswith().
-                new_name = ''
 
-                if a_filename.startswith(string_to_replace):
-                    new_name = a_filename.replace(string_to_replace, replacement_string)
-                    print('new_name is: ', new_name)
+                print("Path of files is: " + str(path_of_files))
+                print("a_filename is: " + str(a_filename))
 
-                if new_name != a_filename:
-                    # rename() - is a top-level function.
-                    rename(a_filename, new_name)
+                if exists(str(path_of_files) + '/' + str(a_filename)) == False:
+                    print("This file name does NOT exist.")
+                    break
+
+                else:
+                    # Rename the file with new_name based on replacement chars.
+                    new_name = ''
+
+                    if a_filename.startswith(string_to_replace):
+                        new_name = a_filename.replace(string_to_replace, replacement_string)
+                        print('new_name is: ', new_name)
+                        path_of_files.join(new_name)
+
+                    # if new_name != a_filename:
+                    #     # rename() - is a top-level function.
+                    #     path_of_files.join(rename(a_filename, new_name))
+
 
     # TODO: Add way to rename files if chars to replace are NOT at
     # filename start.
