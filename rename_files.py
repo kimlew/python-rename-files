@@ -5,11 +5,20 @@
 # 1 - string you want to replace
 # 2 - absolute path or relative path
 
+# Path for Testing:
+# '/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish'
+# Params for Testing in PyCharm:
+# "_" "" "/Users/kimlew/Documents/Courses/Babbel Duo Ling Pims/Swedish"
+
 # In General: Explicit import best - so you know where import from.
 import sys
 from os import rename
-
 from os import walk
+
+import os.path
+from os import path
+from os.path import exists
+
 from os import listdir
 from os.path import isfile
 from os.path import join
@@ -26,14 +35,8 @@ def main():
     print('sys.argv[1]: ', string_to_replace)
     print('sys.argv[2]: ', replacement_string)
     print('sys.argv[3]: ', path_of_files)
+    print("Directory exists: " + str(exists(path_of_files)))
     print()
-
-    # Path to use for testing.
-    # '/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish'
-
-    # TODO: Add check for if path exists.
-    # Use os.path.exists - to check if any directory exists or not.
-    # Use os.makedirs - to create a directory.
 
     # Try 1: walk() - yields 2 lists for each directory it visits.
     # Splits into files & dirs for you. If you ONLY want the TOP-level
@@ -42,34 +45,44 @@ def main():
     filenames_array = []
 
     for (_, _, filenames) in walk(path_of_files):
-        # e.g. for path, subdir, files in os.walk(path):
-        # e.g. for cur_path, directories, files in os.walk(directory):
-        print('Filenames are: ')
 
-        # Test that all files show.
-        # pp = pprint.PrettyPrinter(indent=4)
-        # pp.pprint(filenames)
+        # TODO: Add check for if path exists.
+        # Use os.path.exists - to check if any directory exists or not.
+        # Use os.makedirs - to create a directory.
 
-        filenames_array.extend(filenames)
-        print('')
+        if exists(path_of_files) == False:
+            print("This path does NOT exist.")
+            break
 
-        # Note: Do not need a regex. Use 1 of:
-        # rename() OR replace('_', '') OR filename[0] == something
-        # Try 2: only_files = [filenames_array for filenames_array in listdir(path_used) if isfile(join(
-        # path_used, filenames_array))]
+        else:
+            # e.g. for path, subdir, files in os.walk(path):
+            # e.g. for cur_path, directories, files in os.walk(directory):
+            print('Filenames in directory are: ')
 
-        for a_filename in filenames_array:
-            # The '#' is replaced by the '-' in the filenames in the directory.
-            # replace() - is a string method.
-            # Use startswith().
+            # Test that all files show.
+            # pp = pprint.PrettyPrinter(indent=4)
+            # pp.pprint(filenames)
 
-            if a_filename.startswith(string_to_replace):
-                new_name = a_filename.replace(string_to_replace, replacement_string)
-                print('new_name is: ', new_name)
+            filenames_array.extend(filenames)
+            print('')
 
-            if new_name != a_filename:
-                # rename() - is a top-level function.
-                rename(a_filename, new_name)
+            # Note: Do not need a regex. Use 1 of:
+            # rename() OR replace('_', '') OR filename[0] == something
+            # Try 2: only_files = [filenames_array for filenames_array in listdir(path_used) if isfile(join(
+            # path_used, filenames_array))]
+
+            for a_filename in filenames_array:
+                # The '#' is replaced by the '-' in the filenames in the directory.
+                # replace() - is a string method.
+                # Use startswith().
+
+                if a_filename.startswith(string_to_replace):
+                    new_name = a_filename.replace(string_to_replace, replacement_string)
+                    print('new_name is: ', new_name)
+
+                if new_name != a_filename:
+                    # rename() - is a top-level function.
+                    rename(a_filename, new_name)
 
     # TODO: Add way to rename files if chars to replace are NOT at
     # filename start.
