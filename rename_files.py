@@ -57,14 +57,13 @@ def main():
         else:
             # e.g. for path, subdir, files in os.walk(path):
             # e.g. for cur_path, directories, files in os.walk(directory):
-            print('Filenames in directory are: ')
+            print('--- Filenames in directory are: ---')
 
             # Test that all files show.
             # pp = pprint.PrettyPrinter(indent=4)
             # pp.pprint(filenames)
 
             filenames_array.extend(filenames)
-            print('')
 
             # Note: Do not need a regex. Use 1 of:
             # rename() OR replace('_', '') OR filename[0] == something
@@ -88,10 +87,15 @@ def main():
                     # Rename the file with new_name based on replacement chars.
                     new_name = ''
 
-                    if a_filename.startswith(string_to_replace):
+                    print('Does a_filename start with ' + string_to_replace +
+                          ": " + str(a_filename.startswith(string_to_replace)))
+                    print('')
+
+                    if a_filename.startswith(string_to_replace) == True:
                         new_name = a_filename.replace(string_to_replace, replacement_string)
                         print('new_name is: ', new_name)
-                        path_of_files.join(new_name)
+
+                        # TODO: path_of_files.join(new_name)
 
                     # if new_name != a_filename:
                     #     # rename() - is a top-level function.
