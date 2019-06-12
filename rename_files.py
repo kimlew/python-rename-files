@@ -44,6 +44,7 @@ def main():
 
     filenames_array = []
 
+    # Note: (dirpath, dirnames, filenames)
     for (_, _, filenames) in walk(path_of_files):
 
         # TODO: Add check for if path exists.
@@ -85,15 +86,20 @@ def main():
 
                 else:
                     # Rename the file with new_name based on replacement chars.
-                    new_name = ''
-
                     print('Does a_filename start with ' + string_to_replace +
                           ": " + str(a_filename.startswith(string_to_replace)))
                     print('')
 
                     if a_filename.startswith(string_to_replace) == True:
-                        new_name = a_filename.replace(string_to_replace, replacement_string)
+                        new_name = a_filename.replace(string_to_replace,
+                            replacement_string)
                         print('new_name is: ', new_name)
+
+                        src = path_of_files + "/" + string_to_replace
+                        dest = path_of_files + "/" + new_name
+
+                        print("src is: " + src)
+                        print("dest is: " + dest)
 
                         # TODO: path_of_files.join(new_name)
 
