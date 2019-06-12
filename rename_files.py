@@ -36,7 +36,10 @@ def main():
 
     filenames_array = []
 
-    # Note: (dirpath, dirnames, filenames)
+    # Note:
+    # (dirpath, dirnames, filenames)
+    #  (path, subdir, files) in os.walk(path):
+    #  (cur_path, directories, files) in os.walk(directory):
     for (_, _, filenames) in walk(path_of_files):
 
         # TODO: Add check for if path exists.
@@ -47,8 +50,6 @@ def main():
             break
 
         else:
-            # e.g. for path, subdir, files in os.walk(path):
-            # e.g. for cur_path, directories, files in os.walk(directory):
             print('--- Filenames in directory are: ---')
 
             # Test that all files show.
@@ -57,11 +58,9 @@ def main():
 
             filenames_array.extend(filenames)
 
-            # Note: Do not need a regex. Use 1 of:
-            # rename() OR replace('_', '') OR filename[0] == something
+            # Use: replace('_', ''), then rename(). Do not need a regex.
             # Try 2: only_files = [filenames_array for filenames_array in listdir(path_used) if isfile(join(
             # path_used, filenames_array))]
-
 
             for a_filename in filenames_array:
                 # The '#' is replaced by the '-' in the filenames in the directory.
@@ -103,22 +102,6 @@ def main():
 
     pp = pprint.PrettyPrinter(indent=4)
     # pp.pprint(filenames_array)
-
-# -- Helpful Info --
-'''
-# Loop through every file in the current working directory.
-print("os.listdir('.') is: ", os.listdir('.'))
-print()
-
-for csv_filename in os.listdir('.'):
-    if not csv_filename.endswith('.csv'):
-        continue    # Skip non-csv files.
-'''
-# os.path.getsize('/tmp')
-
-# for filename in myFiles:
-# ...         print(os.path.join('/users/kim', filename))
-#     os.getcwd()
 
 
 # Driver Code
