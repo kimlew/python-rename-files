@@ -96,9 +96,9 @@ def main():
                         print('new_name is: ', new_name)
 
                         path_with_old_file = path_of_files + "/" + \
-                                         string_to_replace
+                             a_filename
                         path_with_new_file = path_of_files + "/" + \
-                                                     new_name
+                            new_name
 
                         print("path_with_old_file: " + path_with_old_file)
                         print("path_with_new_file: " + path_with_new_file)
