@@ -14,15 +14,7 @@
 import sys
 from os import rename
 from os import walk
-
-import os.path
-from os import path
 from os.path import exists
-
-from os import listdir
-from os.path import isfile
-from os.path import join
-
 import pprint
 
 
@@ -49,7 +41,6 @@ def main():
 
         # TODO: Add check for if path exists.
         # Use os.path.exists - to check if any directory exists or not.
-        # Use os.makedirs - to create a directory.
 
         if exists(path_of_files) == False:
             print("This path does NOT exist.")
