@@ -95,11 +95,13 @@ def main():
                             replacement_string)
                         print('new_name is: ', new_name)
 
-                        src = path_of_files + "/" + string_to_replace
-                        dest = path_of_files + "/" + new_name
+                        path_with_old_file = path_of_files + "/" + \
+                                         string_to_replace
+                        path_with_new_file = path_of_files + "/" + \
+                                                     new_name
 
-                        print("src is: " + src)
-                        print("dest is: " + dest)
+                        print("path_with_old_file: " + path_with_old_file)
+                        print("path_with_new_file: " + path_with_new_file)
 
                         # TODO: path_of_files.join(new_name)
 
