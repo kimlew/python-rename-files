@@ -27,29 +27,27 @@ def main():
     print('sys.argv[1]: ', string_to_replace)
     print('sys.argv[2]: ', replacement_string)
     print('sys.argv[3]: ', path_of_files)
-    print("Directory exists: " + str(exists(path_of_files)))
     print()
 
-    # Try 1: walk() - yields 2 lists for each directory it visits.
-    # Splits into files & dirs for you. If you ONLY want the TOP-level
-    # directory - break the 1st time it yields.
+    if exists(path_of_files) == False:
+        print("This path does NOT exist.")
 
-    filenames_array = []
+    else: # exists(path_of_files) == True:
+        # Try 1: walk() - yields 2 lists for each directory it visits.
+        # Splits into files & dirs for you. If you ONLY want the TOP-level
+        # directory - break the 1st time it yields.
 
-    # Note:
-    # (dirpath, dirnames, filenames)
-    #  (path, subdir, files) in os.walk(path):
-    #  (cur_path, directories, files) in os.walk(directory):
-    for (_, _, filenames) in walk(path_of_files):
+        filenames_array = []
 
-        # TODO: Add check for if path exists.
-        # Use os.path.exists - to check if any directory exists or not.
+        # Note:
+        # (dirpath, dirnames, filenames)
+        #  (path, subdir, files) in os.walk(path):
+        #  (cur_path, directories, files) in os.walk(directory):
+        for (_, _, filenames) in walk(path_of_files):
 
-        if exists(path_of_files) == False:
-            print("This path does NOT exist.")
-            break
+            # TODO: Add check for if path exists.
+            # os.path.exists - checks if any directory exists
 
-        else:
             print('--- Filenames in directory are: ---')
 
             # Test that all files show.
@@ -97,8 +95,7 @@ def main():
                         rename(path_with_old_file, path_with_new_file)
 
 
-    # TODO: Add way to rename files if chars to replace are NOT at
-    # filename start.
+    # TODO: Way to rename files if chars to replace are NOT at filename start.
 
     pp = pprint.PrettyPrinter(indent=4)
     # pp.pprint(filenames_array)
