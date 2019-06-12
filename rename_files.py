@@ -103,11 +103,8 @@ def main():
                         print("path_with_old_file: " + path_with_old_file)
                         print("path_with_new_file: " + path_with_new_file)
 
-                        # TODO: path_of_files.join(new_name)
-
-                    # if new_name != a_filename:
-                    #     # rename() - is a top-level function.
-                    #     path_of_files.join(rename(a_filename, new_name))
+                        # rename() - is a top-level function.
+                        rename(path_with_old_file, path_with_new_file)
 
 
     # TODO: Add way to rename files if chars to replace are NOT at
