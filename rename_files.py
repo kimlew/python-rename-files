@@ -1,16 +1,18 @@
 #! /usr/bin/env python3
 
-# Script that replaces files in folder that start with _ TO: '' (empty string).
-# Enter as command-line parameters:
+# Script that replaces files in folder that start with a specific char.
+# e.g. _ (underscore) to '' (empty string).
+# Enter 3 command-line parameters:
 # 1 - string you want to replace
-# 2 - absolute path or relative path
+# 2 - replacement string
+# 3 - absolute path or relative path
 
 # Path for Testing:
 # '/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish'
 # Params for Testing in PyCharm:
 # "_" "" "/Users/kimlew/Documents/Courses/Babbel Duo Ling Pims/Swedish"
 
-# In General: Explicit import best - so you know where import from.
+# In General: Explicit import best - so you know where import is from.
 import sys
 from os import rename
 from os import walk
@@ -19,7 +21,7 @@ import pprint
 
 
 def main():
-    # Read in parameter with absolute or relative folder path you want.
+    # Read in parameters.
     string_to_replace = sys.argv[1]
     replacement_string = sys.argv[2]
     path_of_files = sys.argv[3]
@@ -41,7 +43,6 @@ def main():
 
         # Note:
         # (dirpath, dirnames, filenames)
-        # (path, subdir, files) in os.walk(path):
         # (cur_path, directories, files) in os.walk(directory):
         for (_, _, filenames) in walk(path_of_files):
             print('--- Filenames in directory are: ---')
@@ -53,12 +54,8 @@ def main():
             filenames_array.extend(filenames)
 
             # Use: replace('_', ''), then rename(). Do not need a regex.
-            # Try 2: only_files = [filenames_array for filenames_array in
-            # listdir(path_used) if isfile(join(path_used, filenames_array))]
-
             for a_filename in filenames_array:
-                # replace() - is a string method.
-                # Use startswith().
+                # Use replace(), a string method and startswith().
 
                 print("Path of files is: " + str(path_of_files))
                 print("a_filename is: " + str(a_filename))
@@ -87,9 +84,6 @@ def main():
                         # rename() - is a top-level function.
                         rename(path_with_old_file, path_with_new_file)
 
-    # TODO: Rename file when chars are ANYWHERE in filename, NOT just at start.
 
-
-# Driver Code
 if __name__ == '__main__':
     main()
