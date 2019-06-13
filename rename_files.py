@@ -53,9 +53,8 @@ def main():
 
             filenames_array.extend(filenames)
 
-            # Use: replace('_', ''), then rename(). Do not need a regex.
+            # Use replace('_', ''), a string method, startswith() & rename().
             for a_filename in filenames_array:
-                # Use replace(), a string method and startswith().
 
                 print("Path of files is: " + str(path_of_files))
                 print("a_filename is: " + str(a_filename))
