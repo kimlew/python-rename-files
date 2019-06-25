@@ -34,7 +34,8 @@ def main():
     if exists(path_of_files) == False:
         print("This path does NOT exist.")
 
-    else:  # exists(path_of_files) == True:
+    if (string_to_replace.startswith("_") and replacement_string == ""):
+        # Replace for this special case.
         # Try 1: walk() - yields 2 lists for each directory it visits.
         # Splits into files & dirs for you. If you ONLY want TOP-level
         # directory - break the 1st time it yields.
@@ -82,6 +83,14 @@ def main():
 
                         # rename() - is a top-level function.
                         rename(path_with_old_file, path_with_new_file)
+
+    else:
+        # Replace whatever they wanted replaced with the replacement_string.
+        # else - Do straight replacement based on string_to_replace &
+        # replacement_string. This should cover cases:  - , _Babbel , etc.
+        print("Doing regular replacement.s")
+
+    print('The filenames have been changed.')
 
 
 if __name__ == '__main__':
