@@ -1,15 +1,19 @@
 #! /usr/bin/env python3
 
-# Script that replaces files in folder that start with a specific char.
-# e.g. _ (underscore) to '' (empty string).
-# Enter 3 command-line parameters:
-# 1 - string you want to replace
-# 2 - replacement string
-# 3 - absolute path or relative path
+# Script that renames files based on 3 command-line parameters. Enter:
+# - string you want to replace
+# - replacement string
+# - absolute path or relative path
 
-# Path for Testing:
+# 1st checks specific case: Check for filenames in given folder that start
+# with _ (underscore) to be replaced by '' (empty string).
+# If not that case, then do regular filename replacement.
+
+# --- Example Paths for Testing---
+# Command Line:
 # '/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish'
-# Params for Testing in PyCharm:
+
+# PyCharm Params for Testing:
 # "_" "" "/Users/kimlew/Documents/Courses/Babbel Duo Ling Pims/Swedish"
 
 # In General: Explicit import best - so you know where import is from.
@@ -88,7 +92,7 @@ def main():
         # Replace whatever they wanted replaced with the replacement_string.
         # else - Do straight replacement based on string_to_replace &
         # replacement_string. This should cover cases:  - , _Babbel , etc.
-        print("Doing regular replacement.s")
+        print("Doing regular replacement.")
 
     print('The filenames have been changed.')
 
