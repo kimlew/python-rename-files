@@ -34,6 +34,7 @@ def main():
     print('sys.argv[2]: ', replacement_string)
     print('sys.argv[3]: ', path_of_files)
     print()
+    filenames_array = []
 
     if exists(path_of_files) == False:
         print("This path does NOT exist.")
@@ -43,8 +44,6 @@ def main():
         # Try 1: walk() - yields 2 lists for each directory it visits.
         # Splits into files & dirs for you. If you ONLY want TOP-level
         # directory - break the 1st time it yields.
-
-        filenames_array = []
 
         # Note:
         # (dirpath, dirnames, filenames)
@@ -93,6 +92,34 @@ def main():
         # else - Do straight replacement based on string_to_replace &
         # replacement_string. This should cover cases:  - , _Babbel , etc.
         print("Doing regular replacement.")
+
+        for (_, _, filenames) in walk(path_of_files):
+            print('--- Filenames in directory are: ---')
+
+            # Test that all files show.
+            # pp = pprint.PrettyPrinter(indent=4)
+            # pp.pprint(filenames)
+
+            filenames_array.extend(filenames)
+
+            # Use replace('_', ''), a string method, startswith() & rename().
+            for a_filename in filenames_array:
+
+                print("Path of files is: " + str(path_of_files))
+                print("a_filename is: " + str(a_filename))
+
+                new_name = a_filename.replace(string_to_replace,
+                                              replacement_string)
+                print('new_name is: ', new_name)
+
+                path_with_old_file = path_of_files + "/" + a_filename
+                path_with_new_file = path_of_files + "/" + new_name
+
+                print("path_with_old_file: " + path_with_old_file)
+                print("path_with_new_file: " + path_with_new_file)
+                
+                # rename() - is a top-level function.
+                rename(path_with_old_file, path_with_new_file)
 
     print('The filenames have been changed.')
 
