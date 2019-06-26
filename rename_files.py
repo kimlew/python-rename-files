@@ -84,8 +84,9 @@ def main():
                         print("path_with_old_file: " + path_with_old_file)
                         print("path_with_new_file: " + path_with_new_file)
 
-                        # rename() - is a top-level function.
-                        rename(path_with_old_file, path_with_new_file)
+                        if (path_with_old_file != path_with_new_file):
+                            # rename() - is a top-level function.
+                            rename(path_with_old_file, path_with_new_file)
 
     else:
         # Replace whatever they wanted replaced with the replacement_string.
@@ -117,9 +118,10 @@ def main():
 
                 print("path_with_old_file: " + path_with_old_file)
                 print("path_with_new_file: " + path_with_new_file)
-                
-                # rename() - is a top-level function.
-                rename(path_with_old_file, path_with_new_file)
+
+                if (path_with_old_file != path_with_new_file):
+                    # rename() - is a top-level function.
+                    rename(path_with_old_file, path_with_new_file)
 
     print('The filenames have been changed.')
 
