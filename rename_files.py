@@ -5,18 +5,14 @@
 # - replacement string
 # - absolute path or relative path
 
-# 1st checks specific case: Check for filenames in given folder that start
-# with _ (underscore) to be replaced by '' (empty string).
-# If not that case, then do regular filename replacement.
-
 # --- Example Paths for Testing---
-# Command Line:
-# '/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish'
+# Command Line: python3 rename_files.py "_Babble Spanish" ""
+# "/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish"
 
 # PyCharm Params for Testing:
 # "_" "" "/Users/kimlew/Documents/Courses/Babbel Duo Ling Pims/Swedish"
 
-# In General: Explicit import best - so you know where import is from.
+# Best Practice: Explicit import - so you know where import is from.
 import sys
 from os import rename
 from os import walk
@@ -37,21 +33,8 @@ def main():
     if exists(path_of_files) == False:
         print("This path does NOT exist.")
 
-    if (string_to_replace.startswith("_") and replacement_string == ""):
-        # Replace for this special case.
-        # Try 1: walk() - yields 2 lists for each directory it visits.
-        # Splits into files & dirs for you. If you ONLY want TOP-level
-        # directory - break the 1st time it yields.
-
-        print("Doing special case replacement.")
-        rename_all_files(string_to_replace, replacement_string,
-                         path_of_files)
-
     else:
-        # Replace whatever they wanted replaced with the replacement_string.
-        # else - Do straight replacement based on string_to_replace &
-        # replacement_string. This should cover cases:  - , _Babbel , etc.
-        print("Doing regular replacement.")
+        print("Doing replacement.")
         rename_all_files(string_to_replace, replacement_string,
                          path_of_files)
 
@@ -63,10 +46,6 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
     # (dirpath, dirnames, filenames)
     # (cur_path, directories, files) in os.walk(directory):
     for (_, _, filenames) in walk(path_of_files):
-        # Test that all files show.
-        # pp = pprint.PrettyPrinter(indent=4)
-        # pp.pprint(filenames)
-
         filenames_array.extend(filenames)
 
         # Use replace('_', ''), a string method, startswith() & rename().
