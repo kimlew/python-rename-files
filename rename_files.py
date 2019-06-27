@@ -41,6 +41,7 @@ def main():
 
 def rename_all_files(string_to_replace, replacement_string, path_of_files):
     filenames_array = []
+    files_changed_count = 0;
 
     # Note:
     # (dirpath, dirnames, filenames)
@@ -50,27 +51,25 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
 
         # Use replace('_', ''), a string method, startswith() & rename().
         for a_filename in filenames_array:
-            print("Old filename is: " + str(a_filename))
-
             if exists(str(path_of_files) + '/' + str(a_filename)) == False:
                 print("This file name does NOT exist.")
                 break
 
-            new_name = a_filename.replace(string_to_replace,
+            new_name = a_filename.replace(
+                string_to_replace,
                                           replacement_string)
+            print("Old filename is: " + str(a_filename))
             print('New filename is: ', new_name)
 
             if (a_filename != new_name):
                 path_with_old_file = path_of_files + "/" + a_filename
                 path_with_new_file = path_of_files + "/" + new_name
 
-                # print("path_with_old_file: " + path_with_old_file)
-                # print("path_with_new_file: " + path_with_new_file)
-
-                # rename() - is a top-level function.
+                # Note: rename() - is a top-level function.
                 rename(path_with_old_file, path_with_new_file)
+                files_changed_count = files_changed_count + 1
     print('')
-    print('The filenames have been changed.')
+    print(files_changed_count, 'filenames have been changed.')
 
 
 if __name__ == '__main__':
