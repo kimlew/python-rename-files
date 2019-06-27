@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
-# Script that renames files based on 3 command-line parameters. Enter:
+# Script for use on local machine that renames files based on 3
+# command-line parameters. Enter:
 # - string you want to replace
 # - replacement string
 # - absolute path or relative path
@@ -55,13 +56,13 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
                 print("This file name does NOT exist.")
                 break
 
-            new_name = a_filename.replace(
-                string_to_replace,
+            new_name = a_filename.replace(string_to_replace,
                                           replacement_string)
-            print("Old filename is: " + str(a_filename))
-            print('New filename is: ', new_name)
 
             if (a_filename != new_name):
+                print("Old filename is: " + str(a_filename))
+                print('New filename is:', new_name)
+
                 path_with_old_file = path_of_files + "/" + a_filename
                 path_with_new_file = path_of_files + "/" + new_name
 
