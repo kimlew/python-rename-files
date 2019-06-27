@@ -21,7 +21,6 @@ import sys
 from os import rename
 from os import walk
 from os.path import exists
-import pprint
 
 
 def main():
@@ -58,16 +57,12 @@ def main():
 
 
 def rename_all_files(string_to_replace, replacement_string, path_of_files):
-    print()
-    print('IN rename_all_files()')
-
     filenames_array = []
 
     # Note:
     # (dirpath, dirnames, filenames)
     # (cur_path, directories, files) in os.walk(directory):
     for (_, _, filenames) in walk(path_of_files):
-        print('IN for loop')
         # Test that all files show.
         # pp = pprint.PrettyPrinter(indent=4)
         # pp.pprint(filenames)
@@ -76,7 +71,6 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
 
         # Use replace('_', ''), a string method, startswith() & rename().
         for a_filename in filenames_array:
-            print("Path of files is: " + str(path_of_files))
             print("Old filename is: " + str(a_filename))
 
             if exists(str(path_of_files) + '/' + str(a_filename)) == False:
