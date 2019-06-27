@@ -31,7 +31,7 @@ def main():
     print('sys.argv[3]: ', path_of_files)
     print()
 
-    if exists(path_of_files) == False:
+    if exists(path_of_files) is False:
         print("This path does NOT exist.")
 
     else:
@@ -42,7 +42,7 @@ def main():
 
 def rename_all_files(string_to_replace, replacement_string, path_of_files):
     filenames_array = []
-    files_changed_count = 0;
+    files_changed_count = 0
 
     # Note:
     # (dirpath, dirnames, filenames)
@@ -50,16 +50,15 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
     for (_, _, filenames) in walk(path_of_files):
         filenames_array.extend(filenames)
 
-        # Use replace('_', ''), a string method, startswith() & rename().
         for a_filename in filenames_array:
-            if exists(str(path_of_files) + '/' + str(a_filename)) == False:
+            if exists(str(path_of_files) + '/' + str(a_filename)) is False:
                 print("This file name does NOT exist.")
                 break
 
             new_name = a_filename.replace(string_to_replace,
                                           replacement_string)
 
-            if (a_filename != new_name):
+            if a_filename != new_name:
                 print("Old filename is: " + str(a_filename))
                 print('New filename is:', new_name)
 
