@@ -8,7 +8,7 @@
 
 # --- Example Paths for Testing---
 # Command Line: python3 rename_files.py "_Babble Spanish" ""
-# "/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Swedish"
+# "/Users/kimlew/Documents/Courses/Babbel\ Duo\ Ling\ Pims/Spanish"
 
 # PyCharm Params for Testing:
 # "_" "" "/Users/kimlew/Documents/Courses/Babbel Duo Ling Pims/Swedish"
@@ -70,7 +70,6 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
                 files_changed_count = files_changed_count + 1
     print()
     print(files_changed_count, 'filename(s) have been changed.')
-    print()
 
 
 if __name__ == '__main__':
