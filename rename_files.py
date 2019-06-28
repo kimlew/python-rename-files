@@ -26,19 +26,19 @@ def main():
     replacement_string = sys.argv[2]
     path_of_files = sys.argv[3]
 
-    print('sys.argv[1]: ', string_to_replace)
-    print('sys.argv[2]: ', replacement_string)
-    print('sys.argv[3]: ', path_of_files)
+    print('String to replace: ', string_to_replace)
+    print('Replacement string: ', replacement_string)
+    print('Folder path: ', path_of_files)
     print()
 
     if exists(path_of_files) is False:
         print("This path does NOT exist.")
 
     else:
-        print("Doing replacement.")
+        print("Doing replacement...")
         rename_all_files(string_to_replace, replacement_string,
                          path_of_files)
-
+        print()
 
 def rename_all_files(string_to_replace, replacement_string, path_of_files):
     filenames_array = []
@@ -68,8 +68,9 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
                 # Note: rename() - is a top-level function.
                 rename(path_with_old_file, path_with_new_file)
                 files_changed_count = files_changed_count + 1
-    print('')
+    print()
     print(files_changed_count, 'filename(s) have been changed.')
+    print()
 
 
 if __name__ == '__main__':
