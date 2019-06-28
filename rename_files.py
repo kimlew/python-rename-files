@@ -21,6 +21,18 @@ from os.path import exists
 
 
 def main():
+    string_to_replace, replacement_string, path_of_files  = get_input()
+
+    if exists(path_of_files) is False:
+        print("This path does NOT exist.")
+
+    else:
+        print("Doing replacement...")
+        rename_all_files(string_to_replace, replacement_string, path_of_files)
+        print()
+
+
+def get_input():
     # Read in parameters.
     string_to_replace = sys.argv[1]
     replacement_string = sys.argv[2]
@@ -30,15 +42,8 @@ def main():
     print('Replacement string: ', replacement_string)
     print('Folder path: ', path_of_files)
     print()
+    return string_to_replace, replacement_string, path_of_files
 
-    if exists(path_of_files) is False:
-        print("This path does NOT exist.")
-
-    else:
-        print("Doing replacement...")
-        rename_all_files(string_to_replace, replacement_string,
-                         path_of_files)
-        print()
 
 def rename_all_files(string_to_replace, replacement_string, path_of_files):
     filenames_array = []
