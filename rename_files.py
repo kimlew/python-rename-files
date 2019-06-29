@@ -21,7 +21,7 @@ from os.path import exists
 
 
 def main():
-    string_to_replace, replacement_string, path_of_files  = get_input()
+    string_to_replace, replacement_string, path_of_files = get_input()
 
     if exists(path_of_files) is False:
         print("This path does NOT exist.")
