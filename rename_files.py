@@ -74,7 +74,7 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
                 rename(path_with_old_file, path_with_new_file)
                 files_changed_count = files_changed_count + 1
     print()
-    print(files_changed_count, 'filename(s) have been changed.')
+    print('Renamed: ', files_changed_count, ' file(s)')
 
 
 if __name__ == '__main__':
