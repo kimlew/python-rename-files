@@ -46,24 +46,22 @@ def get_input():
     replacement_string = sys.argv[2]
     path_of_files = sys.argv[3]
 
-    print(' String to replace: ', string_to_replace)
-    print(' Replacement string: ', replacement_string)
+    print(' String to replace:\t', string_to_replace)
+    print(' Replacement string:\t', replacement_string)
     print(' Folder path:', path_of_files)
     print()
     return string_to_replace, replacement_string, path_of_files
 
 
 def rename_all_files(string_to_replace, replacement_string, path_of_files):
-    filenames_array = []
     files_changed_count = 0
 
     # Note:
     # (dirpath, dirnames, filenames)
     # (cur_path, directories, files) in os.walk(directory):
     for (_, _, filenames) in walk(path_of_files):
-        filenames_array.extend(filenames)
 
-        for a_filename in filenames_array:
+        for a_filename in filenames:
             if exists(str(path_of_files) + '/' + str(a_filename)) is False:
                 print("This file name does NOT exist.")
                 break
