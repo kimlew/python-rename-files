@@ -33,14 +33,22 @@ def main():
 
 
 def get_input():
+    print(" You entered", len(sys.argv)-1, "arguments at the command line.")
+
+    if len(sys.argv) != 4:
+        # IndexError: list index out of range
+        print(" Error: Wrong number of arguments. Enter 3 arguments: 1. "
+              "string to replace 2. replacement string 3. path for files ")
+        sys.exit(1)
+
     # Read in parameters.
     string_to_replace = sys.argv[1]
     replacement_string = sys.argv[2]
     path_of_files = sys.argv[3]
 
-    print('String to replace: ', string_to_replace)
-    print('Replacement string: ', replacement_string)
-    print('Folder path: ', path_of_files)
+    print(' String to replace: ', string_to_replace)
+    print(' Replacement string: ', replacement_string)
+    print(' Folder path:', path_of_files)
     print()
     return string_to_replace, replacement_string, path_of_files
 
