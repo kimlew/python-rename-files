@@ -57,12 +57,17 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
     files_changed_count = 0
 
     # Note:
-    # (dirpath, dirnames, filenames)
-    # (cur_path, directories, files) in os.walk(directory):
-    for (_, _, filenames) in walk(path_of_files):
+    # (dirpath, dirnames, filenames) in os.walk(directory)
+    # (cur_path, directories, files) in os.walk(directory)
+    # Note: dirpath
+    # - ensures that path with sub-directories is used, if applicable
+    # - is the start location for each iteration - varies since it changes if
+    # there are sub-directories
+    # - is the 1st part of each directory-path-files tuple
+    for (dirpath, _, filenames) in walk(path_of_files):
 
         for a_filename in filenames:
-            if exists(str(path_of_files) + '/' + str(a_filename)) is False:
+            if exists(str(dirpath) + '/' + str(a_filename)) is False:
                 print("This file name does NOT exist.")
                 break
 
@@ -73,8 +78,8 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
                 print("Old filename is: " + str(a_filename))
                 print('New filename is:', new_name)
 
-                path_with_old_file = path_of_files + "/" + a_filename
-                path_with_new_file = path_of_files + "/" + new_name
+                path_with_old_file = dirpath + "/" + a_filename
+                path_with_new_file = dirpath + "/" + new_name
 
                 # Note: rename() - is a top-level function.
                 rename(path_with_old_file, path_with_new_file)
