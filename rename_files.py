@@ -4,7 +4,7 @@
 # command-line parameters. Enter:
 # - string you want to replace
 # - replacement string
-# - absolute path or relative path
+# - absolute path or relative path of starting directory
 
 # --- Example Paths for Testing---
 # Command Line: python3 rename_files.py "_Babble Spanish" ""
@@ -48,7 +48,7 @@ def get_input():
 
     print(' String to replace:\t', string_to_replace)
     print(' Replacement string:\t', replacement_string)
-    print(' Folder path:', starting_dir)
+    print(' Directory path:\t', starting_dir)
     print()
     return string_to_replace, replacement_string, starting_dir
 
