@@ -4,7 +4,7 @@
 # command-line parameters. Enter:
 # - string you want to replace
 # - replacement string
-# - absolute path or relative path
+# - absolute path or relative path of starting directory
 
 # --- Example Paths for Testing---
 # Command Line: python3 rename_files.py "_Babble Spanish" ""
@@ -21,14 +21,14 @@ from os.path import exists
 
 
 def main():
-    string_to_replace, replacement_string, path_of_files = get_input()
+    string_to_replace, replacement_string, starting_dir = get_input()
 
-    if exists(path_of_files) is False:
+    if exists(starting_dir) is False:
         print("This path does NOT exist.")
 
     else:
         print("Doing replacement...")
-        rename_all_files(string_to_replace, replacement_string, path_of_files)
+        rename_all_files(string_to_replace, replacement_string, starting_dir)
         print()
 
 
@@ -44,25 +44,30 @@ def get_input():
     # Read in parameters.
     string_to_replace = sys.argv[1]
     replacement_string = sys.argv[2]
-    path_of_files = sys.argv[3]
+    starting_dir = sys.argv[3]
 
     print(' String to replace:\t', string_to_replace)
     print(' Replacement string:\t', replacement_string)
-    print(' Folder path:', path_of_files)
+    print(' Directory path:\t', starting_dir)
     print()
-    return string_to_replace, replacement_string, path_of_files
+    return string_to_replace, replacement_string, starting_dir
 
 
-def rename_all_files(string_to_replace, replacement_string, path_of_files):
+def rename_all_files(string_to_replace, replacement_string, starting_dir):
     files_changed_count = 0
 
     # Note:
-    # (dirpath, dirnames, filenames)
-    # (cur_path, directories, files) in os.walk(directory):
-    for (_, _, filenames) in walk(path_of_files):
+    # (dirpath, dirnames, filenames) in os.walk(directory)
+    # (cur_path, directories, files) in os.walk(directory)
+    # Note: dirpath
+    # - ensures that path with sub-directories is used, if applicable
+    # - is the start location for each iteration - varies since it changes if
+    # there are sub-directories
+    # - is the 1st part of each directory-path-files tuple
+    for (dirpath, _, filenames) in walk(starting_dir):
 
         for a_filename in filenames:
-            if exists(str(path_of_files) + '/' + str(a_filename)) is False:
+            if exists(str(dirpath) + '/' + str(a_filename)) is False:
                 print("This file name does NOT exist.")
                 break
 
@@ -73,8 +78,8 @@ def rename_all_files(string_to_replace, replacement_string, path_of_files):
                 print("Old filename is: " + str(a_filename))
                 print('New filename is:', new_name)
 
-                path_with_old_file = path_of_files + "/" + a_filename
-                path_with_new_file = path_of_files + "/" + new_name
+                path_with_old_file = dirpath + "/" + a_filename
+                path_with_new_file = dirpath + "/" + new_name
 
                 # Note: rename() - is a top-level function.
                 rename(path_with_old_file, path_with_new_file)
