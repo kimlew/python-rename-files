@@ -36,10 +36,10 @@ def get_input():
     print(" You entered", len(sys.argv)-1, "arguments at the command line.")
 
     if len(sys.argv) != 4:
-        # IndexError: list index out of range
-        print(" Error: Wrong number of arguments. Enter 3 arguments: 1. "
-              "string to replace 2. replacement string 3. path for files ")
-        sys.exit(1)
+        # Ordinary exception now vs. IndexError: list index out of range.
+        raise Exception(
+            " Error: Wrong number of arguments. Enter 3 arguments: 1. "
+            "string to replace 2. replacement string 3. path for files ")
 
     # Read in parameters.
     string_to_replace = sys.argv[1]
